@@ -1,0 +1,327 @@
+field,label,group
+ATC_ACE_INHIBITORS_PLAIN,ACE inhibitors,Active Medications
+ATC_ACETIC_ACID_DERIVATIVES_AND_RELATED_SUBSTANCES,Acetic acid derivatives and related substances,Active Medications
+ATC_AMIDES,Amides,Active Medications
+ATC_ANESTHETICS_FOR_TOPICAL_USE,Anesthetics for topical use,Active Medications
+ATC_ANESTHETICS_LOCAL,Anesthetics local,Active Medications
+ATC_ANGIOTENSIN_II_ANTAGONISTS_PLAIN,Angiotensin II antagonists,Active Medications
+ATC_ANILIDES,Anilides,Active Medications
+ATC_BENZODIAZEPINE_DERIVATIVES,Benzodiazepine derivatives,Active Medications
+ATC_BENZODIAZEPINE_RELATED_DRUGS,Benzodiazepine related drugs,Active Medications
+ATC_BETA_BLOCKING_AGENTS_SELECTIVE,"Beta blocking agents, selective",Active Medications
+ATC_BIGUANIDES,Biguanides,Active Medications
+ATC_CORTICOSTEROIDS_PLAIN,Corticosteroids,Active Medications
+ATC_DIHYDROPYRIDINE_DERIVATIVES,Dihydropyridine derivatives,Active Medications
+ATC_DRUGS_FOR_URINARY_FREQUENCY_AND_INCONTINENCE,Drugs for urinary frequency and incontinence,Active Medications
+ATC_ELECTROLYTE_SOLUTIONS,Electrolyte solutions,Active Medications
+ATC_FIRST_GENERATION_CEPHALOSPORINS,First generation cephalosporins,Active Medications
+ATC_FLUOROQUINOLONES,Fluoroquinolones,Active Medications
+ATC_GLUCOCORTICOIDS,Glucocorticoids,Active Medications
+ATC_H2_RECEPTOR_ANTAGONISTS,H2 receptor antagonists,Active Medications
+ATC_HMG_COA_REDUCTASE_INHIBITORS,HMG-CoA reductase inhibitors (statins),Active Medications
+ATC_INTERMEDIATE_ACTING_SULFONAMIDES,Intermediate-acting sulfonamides,Active Medications
+ATC_NATURAL_AND_SEMISYNTHETIC_ESTROGENS_PLAIN,"Natural and semisynthetic estrogens, plain",Active Medications
+ATC_NATURAL_OPIUM_ALKALOIDS,Natural opium alkaloids,Active Medications
+ATC_NITROFURAN_DERIVATIVES,Nitrofuran derivatives,Active Medications
+ATC_NON_SELECTIVE_MONOAMINE_REUPTAKE_INHIBITORS,Non-selective monoamine reuptake inhibitors,Active Medications
+ATC_OPIOID_ANESTHETICS,Opioid anesthetics,Active Medications
+ATC_OPIUM_ALKALOIDS_AND_DERIVATIVES,Opium alkaloids and derivatives,Active Medications
+ATC_OTHER_ANTIDEPRESSANTS,Antidepressants,Active Medications
+ATC_OTHER_ANTIEPILEPTICS,Antiepileptics,Active Medications
+ATC_OTHER_ANTIHISTAMINES_FOR_SYSTEMIC_USE,Antihistamines for systemic use,Active Medications
+ATC_OTHER_CENTRALLY_ACTING_AGENTS,Centrally acting agents,Active Medications
+ATC_OTHER_GENERAL_ANESTHETICS,General anesthetics,Active Medications
+ATC_OTHER_PLAIN_VITAMIN_PREPARATIONS,Vitamin preparations,Active Medications
+ATC_OTHER_QUATERNARY_AMMONIUM_COMPOUNDS,Quarternary ammonium compounds,Active Medications
+ATC_OTHER_UROLOGICALS,Urologicals,Active Medications
+ATC_PENICILLINS_WITH_EXTENDED_SPECTRUM,Penicillins with extended spectrum,Active Medications
+ATC_PHENOTHIAZINE_DERIVATIVES,Pheothiazine derivatives,Active Medications
+ATC_PHENYLPIPERIDINE_DERIVATIVES,Phenylpiperidine derivatives,Active Medications
+ATC_PIPERAZINE_DERIVATIVES,Piperazine derivatives,Active Medications
+ATC_PROPIONIC_ACID_DERIVATIVES,Propionic acid derivatives,Active Medications
+ATC_PROTON_PUMP_INHIBITORS,Proton pump inhibitors,Active Medications
+ATC_SELECTIVE_SEROTONIN_REUPTAKE_INHIBITORS,Selective serotonin reuptake inhibitors,Active Medications
+ATC_SEROTONIN_5HT3_ANTAGONISTS,Serotonin 5-HT3 antagonists,Active Medications
+ATC_SOFTENERS_EMOLLIENTS,Softeners and emollients,Active Medications
+ATC_SULFONAMIDES_PLAIN,Sulfonamides,Active Medications
+ATC_THIAZIDES_PLAIN,Thiazides,Active Medications
+ATC_THYROID_HORMONES,Thyroid hormones,Active Medications
+ATC_TRIMETHOPRIM_AND_DERIVATIVES,Trimethoprim and derivatives,Active Medications
+ATC_VITAMIN_D_AND_ANALOGUES,Vitamin D and analogues,Active Medications
+CONCOMITANTSURG,Concomitant surgery,Prior Medical History
+DEATH1Y,Death within 1 year post-procedure,Outcomes
+DEATH2Y,Death within 2 years post-procedure,Outcomes
+DEATH30d,Death within 30 days post-procedure,Outcomes
+DEATH5Y,Death within 5 years post-procedure,Outcomes
+DEATH90d,Death within 90 days post-procedure,Outcomes
+DEATHevent,Death post-procedure,Outcomes
+EROSION1Y,Mesh erosion within 1 year post-procedure,Outcomes
+EROSION2Y,Mesh erosion within 2 years post-procedure,Outcomes
+EROSION30d,Mesh erosion within 30 days post-procedure,Outcomes
+EROSION5Y,Mesh erosion within 5 years post-procedure,Outcomes
+EROSION90d,Mesh erosion within 90 days post-procedure,Outcomes
+EROSIONevent,Mesh erosion post-procedure,Outcomes
+FEMALE,Gender (female),Demographics
+FISTULA1Y,Fistula within 1 year post-procedure,Outcomes
+FISTULA2Y,Fistula within 2 years post-procedure,Outcomes
+FISTULA30d,Fistula within 30 days post-procedure,Outcomes
+FISTULA5Y,Fistula within 5 years post-procedure,Outcomes
+FISTULA90d,Fistula within 90 days post-procedure,Outcomes
+FISTULAevent,Fistula post-procedure,Outcomes
+FOLLOWUP1Y,At least 1 year follow-up post-procedure,Outcomes
+FOLLOWUP2Y,At least 2 years follow-up post-procedure,Outcomes
+FOLLOWUP30d,At least 30 days follow-up post-procedure,Outcomes
+FOLLOWUP5Y,At least 5 years follow-up post-procedure,Outcomes
+FOLLOWUP90d,At least 90 days follow-up post-procedure,Outcomes
+FOLLOWUPevent,Any follow-up post-procedure,Outcomes
+HGB_UA_MAX,Hemoglobin urinalysis (max),Labs
+HGB_UA_MEAN,Hemoglobin urinalysis (mean),Labs
+HGB_UA_MEDIAN,Hemoglobin urinalysis (median),Labs
+HGB_UA_MIN,Hemoglobin urinalysis (min),Labs
+HISPANIC,Ethnicity,Demographics
+HISTORYMENOPAUSE,History of menopause,Prior Medical History
+HISTORYSMOKING,History of smoking,Prior Medical History
+INDICATION_REOPERATION,Reoperation,Outcomes
+INFECTION14d,Infection within 14 days post-procedure,Outcomes
+INFECTION30d,Infection within 30 days post-procedure,Outcomes
+INFECTION7d,Infection within 7 days post-procedure,Outcomes
+INFECTIONevent,Infection post-procedure,Outcomes
+LAP_SLING,Laparoscopic approach sling,Prior Medical History
+NITRITE_UA_MAX,Nitrite urinalysis (max),Labs
+NITRITE_UA_MEAN,Nitrite urinalysis (mean),Labs
+NITRITE_UA_MEDIAN,Nitrite urinalysis (median),Labs
+NITRITE_UA_MIN,Nitrite urinalysis (min),Labs
+PAIN1Y,Pain within 1 year post-procedure,Outcomes
+PAIN2Y,Pain within 2 years post-procedure,Outcomes
+PAIN30d,Pain within 30 days post-procedure,Outcomes
+PAIN5Y,Pain within 5 years post-procedure,Outcomes
+PAIN90d,Pain within 90 days post-procedure,Outcomes
+PAINevent,Pain post-procedure,Outcomes
+PERFORATION1Y,Perforation within 1 year post-procedure,Outcomes
+PERFORATION2Y,Perforation within 2 years post-procedure,Outcomes
+PERFORATION30d,Perforation within 30 days post-procedure,Outcomes
+PERFORATION5Y,Perforation within 5 years post-procedure,Outcomes
+PERFORATION90d,Perforation within 90 days post-procedure,Outcomes
+PERFORATIONevent,Perforation post-procedure,Outcomes
+PERIABSURG,Concomitant abdominal surgery,Prior Medical History
+PERIHISTORYCHRONICPAIN,History of chronic pain at time of procedure,Prior Medical History
+POSTABSURG,Abdominal surgery post-procedure,Outcomes
+POSTHISTORYCHRONICPAIN,Chronic pain post-procedure,Outcomes
+POSTVOIDING1Y,Voiding symptoms within 1 year post-procedure,Outcomes
+POSTVOIDING2Y,Voiding symptoms within 2 years post-procedure,Outcomes
+POSTVOIDING30d,Voiding symptoms within 30 days post-procedure,Outcomes
+POSTVOIDING5Y,Voiding symptoms within 5 years post-procedure,Outcomes
+POSTVOIDING90d,Voiding symptoms within 90 days post-procedure,Outcomes
+POSTVOIDINGevent,Voiding symptoms post-procedure,Outcomes
+PREABSURG,Abdominal Surgery pre-procedure,Prior Medical History
+PREHISTORYCHRONICPAIN,Chronic Pain pre-procedure,Prior Medical History
+PRESURGERYCAD,Prior Coronary artery disease,Prior Medical History
+PRESURGERYDM,Diabetes pre-procedure,Prior Medical History
+PRESURGERYHLD,Hyperlipidemia pre-procedure,Prior Medical History
+PRESURGERYHTN,Hypertension pre-procedure,Prior Medical History
+PRESURGERYPVD,Peripheral vascular disease pre-procedure,Prior Medical History
+PRIORDIVERICULUM,Diverticula pre-procedure,Prior Medical History
+PRIORPROLAPSE,Prolapse pre-procedure,Prior Medical History
+PRIORSUI,Stress urinary incontinence pre-procedure,Prior Medical History
+RACE_AMERICAN_INDIAN_ALASKA_NATIVE,American Indian or Alaska Native,Demographics
+RACE_ASIAN,Asian,Demographics
+RACE_BLACK,African American,Demographics
+RACE_NATIVE_HAWAIIAN_PACIFIC_ISLANDER,Native Hawaiian or Pacific Islander,Demographics
+RACE_UNKNOWN,Unknown,Demographics
+RACE_WHITE,Caucasian,Demographics
+REMOVAL1Y,Mesh removal within 1 year post-procedure,Outcomes
+REMOVAL2Y,Mesh removal within 2 years post-procedure,Outcomes
+REMOVAL30d,Mesh removal within 30 days post-procedure,Outcomes
+REMOVAL5Y,Mesh removal within 5 years post-procedure,Outcomes
+REMOVAL90d,Mesh removal within 90 days post-procedure,Outcomes
+REMOVALevent,Mesh removal post-procedure,Outcomes
+REOPERATION1Y,Reoperation within 1 year post-procedure,Outcomes
+REOPERATION2Y,Reoperation within 2 years post-procedure,Outcomes
+REOPERATION30d,Reoperation within 30 days post-procedure,Outcomes
+REOPERATION5Y,Reoperation within 5 years post-procedure,Outcomes
+REOPERATION90d,Reoperation within 90 days post-procedure,Outcomes
+REOPERATIONevent,Reoperation post-procedure,Outcomes
+SUI_IND,Stress urinary incontinence,Prior Medical History
+URODYNAMICTESTING,Urodynamic testing,Prior Medical History
+VISITYEARPOSTSURGERY,One or more visits in the year post-procedure,Prior Medical History
+VISITYEARPRIORSURGERY,One or more visits in the year pre-procedure,Prior Medical History
+AGE_PROCEDURE,Age at procedure,Demographics
+ALBUMIN_BSP_MG_MAX,"Albumin BSP, mg (max)",Labs
+ALBUMIN_BSP_MG_MEAN,"Albumin BSP, mg (mean)",Labs
+ALBUMIN_BSP_MG_MEDIAN,"Albumin BSP, mg (median)",Labs
+ALBUMIN_BSP_MG_MIN,"Albumin BSP, mg (min)",Labs
+ALT_BSP_MAX,ALT BSP (max),Labs
+ALT_BSP_MEAN,ALT BSP (mean),Labs
+ALT_BSP_MEDIAN,ALT BSP (median),Labs
+ALT_BSP_MIN,ALT BSP (min),Labs
+AST_BSP_MAX,AST BSP (max),Labs
+AST_BSP_MEAN,AST BSP (mean),Labs
+AST_BSP_MEDIAN,AST BSP (median),Labs
+AST_BSP_MIN,AST BSP (min),Labs
+BILI_TOTAL_BSP_MG_MAX,"Bilirubin total BSP, mg (max)",Labs
+BILI_TOTAL_BSP_MG_MEAN,"Bilirubin total BSP, mg (mean)",Labs
+BILI_TOTAL_BSP_MG_MEDIAN,"Bilirubin total BSP, mg (median)",Labs
+BILI_TOTAL_BSP_MG_MIN,"Bilirubin total BSP, mg (min)",Labs
+BMI,BMI,Prior Medical History
+BUN_BSP_MG_MAX,"Urea nitrogen BSP, mg/dL (max)",Labs
+BUN_BSP_MG_MEAN,"Urea nitrogen BSP, mg/dL (mean)",Labs
+BUN_BSP_MG_MEDIAN,"Urea nitrogen BSP, mg/dL (median)",Labs
+BUN_BSP_MG_MIN,"Urea nitrogen BSP, mg/dL (min)",Labs
+CA_BSP_MG_MAX,"Calcium BSP, mg/dL (max)",Labs
+CA_BSP_MG_MEAN,"Calcium BSP, mg/dL (mean)",Labs
+CA_BSP_MG_MEDIAN,"Calcium BSP, mg/dL (median)",Labs
+CA_BSP_MG_MIN,"Calcium BSP, mg/dL (min)",Labs
+CHOL_BSP_MG_MAX,"Cholesterol total BSP, mg (max)",Labs
+CHOL_BSP_MG_MEAN,"Cholesterol total BSP, mg (mean)",Labs
+CHOL_BSP_MG_MEDIAN,"Cholesterol total BSP, mg (median)",Labs
+CHOL_BSP_MG_MIN,"Cholesterol total BSP, mg (min)",Labs
+CL_BSP_MMOL_MAX,"Chloride BSP, mmol/L (max)",Labs
+CL_BSP_MMOL_MEAN,"Chloride BSP, mmol/L (mean)",Labs
+CL_BSP_MMOL_MEDIAN,"Chloride BSP, mmol/L (median)",Labs
+CL_BSP_MMOL_MIN,"Chloride BSP, mmol/L (min)",Labs
+CO2_BSP_MMOL_MAX,"CO2 BSP, mmol/L (max)",Labs
+CO2_BSP_MMOL_MEAN,"CO2 BSP, mmol/L (mean)",Labs
+CO2_BSP_MMOL_MEDIAN,"CO2 BSP, mmol/L (median)",Labs
+CO2_BSP_MMOL_MIN,"CO2 BSP, mmol/L (min)",Labs
+CREAT_BSP_MG_MAX,"Creatinine BSP, mg/dLS (max)",Labs
+CREAT_BSP_MG_MEAN,"Creatinine BSP, mg/dLS (mean)",Labs
+CREAT_BSP_MG_MEDIAN,"Creatinine BSP, mg/dLS (median)",Labs
+CREAT_BSP_MG_MIN,"Creatinine BSP, mg/dLS (min)",Labs
+DAYS_FOLLOWUP,Days of follow-up post-procedure,Outcomes
+DAYS_SURGERY_DEATH,Death post-procedure (in days),Outcomes
+DAYS_SURGERY_EROSION,Mesh erosion post-procedure (in days),Outcomes
+DAYS_SURGERY_FISTULA,Fistula post-procedure (in days),Outcomes
+DAYS_SURGERY_INFECTION,Infection post-procedure (in days),Outcomes
+DAYS_SURGERY_MOST_RECENT_INPAT_VISIT,Subsequent inpatient visit post-procedure (in days),Outcomes
+DAYS_SURGERY_MOST_RECENT_OUTPAT_VISIT,Subsequent outpatient visit post-procedure (in days),Outcomes
+DAYS_SURGERY_PAIN,Patient reported pain post-procedure (in days),Outcomes
+DAYS_SURGERY_PERFORATION,Perforation post-procedure (in days),Outcomes
+DAYS_SURGERY_PERIVOIDING,Voiding symptoms within 1 day of procedure (in days),Prior Medical History
+DAYS_SURGERY_POSTVOIDING,Voiding symptoms post-procedure (in days),Outcomes
+DAYS_SURGERY_PREVOIDING,Voiding symptoms pre-procedure (in days),Prior Medical History
+DAYS_SURGERY_REMOVAL,Mesh removal post-procedure (in days),Outcomes
+DAYS_SURGERY_REOPERATION,Reoperation post-procedure (in days),Outcomes
+FERRITIN_BSP_MG_MAX,"Ferritin BSP, mg (max)",Labs
+FERRITIN_BSP_MG_MEAN,"Ferritin BSP, mg (mean)",Labs
+FERRITIN_BSP_MG_MEDIAN,"Ferritin BSP, mg (median)",Labs
+FERRITIN_BSP_MG_MIN,"Ferritin BSP, mg (min)",Labs
+GLUCOSE_BSP_MG_MAX,"Glucose BSP, mg/dL (max)",Labs
+GLUCOSE_BSP_MG_MEAN,"Glucose BSP, mg/dL (mean)",Labs
+GLUCOSE_BSP_MG_MEDIAN,"Glucose BSP, mg/dL (median)",Labs
+GLUCOSE_BSP_MG_MIN,"Glucose BSP, mg/dL (min)",Labs
+HDL_BSP_MG_MAX,"HDL cholesterol BSP, mg (max)",Labs
+HDL_BSP_MG_MEAN,"HDL cholesterol BSP, mg (mean)",Labs
+HDL_BSP_MG_MEDIAN,"HDL cholesterol BSP, mg (median)",Labs
+HDL_BSP_MG_MIN,"HDL cholesterol BSP, mg (min)",Labs
+HGB_BSP_GM_MAX,"Hemoglobin BSP, gm/dL (max)",Labs
+HGB_BSP_GM_MEAN,"Hemoglobin BSP, gm/dL (mean)",Labs
+HGB_BSP_GM_MEDIAN,"Hemoglobin BSP, gm/dL (median)",Labs
+HGB_BSP_GM_MIN,"Hemoglobin BSP, gm/dL (min)",Labs
+HGBA1C_BSP_MAX,"HgbA1c BSP, % (max)",Labs
+HGBA1C_BSP_MEAN,"HgbA1c BSP, % (mean)",Labs
+HGBA1C_BSP_MEDIAN,"HgbA1c BSP, % (median)",Labs
+HGBA1C_BSP_MIN,"HgbA1c BSP, % (min)",Labs
+I_CALCIUM_BSP_MG_MAX,"Ionized calcium BSP, mg (max)",Labs
+I_CALCIUM_BSP_MG_MEAN,"Ionized calcium BSP, mg (mean)",Labs
+I_CALCIUM_BSP_MG_MEDIAN,"Ionized calcium BSP, mg (median)",Labs
+I_CALCIUM_BSP_MG_MIN,"Ionized calcium BSP, mg (min)",Labs
+INR_BSP_MAX,INR BSP (max),Labs
+INR_BSP_MEAN,INR BSP (mean),Labs
+INR_BSP_MEDIAN,INR BSP (median),Labs
+INR_BSP_MIN,INR BSP (min),Labs
+IRON_BSP_MG_MAX,"Iron BSP, mg (max)",Labs
+IRON_BSP_MG_MEAN,"Iron BSP, mg (mean)",Labs
+IRON_BSP_MG_MEDIAN,"Iron BSP, mg (median)",Labs
+IRON_BSP_MG_MIN,"Iron BSP, mg (min)",Labs
+K_BSP_MMOL_MAX,"Potassium BSP, mmol/L (max)",Labs
+K_BSP_MMOL_MEAN,"Potassium BSP, mmol/L (mean)",Labs
+K_BSP_MMOL_MEDIAN,"Potassium BSP, mmol/L (median)",Labs
+K_BSP_MMOL_MIN,"Potassium BSP, mmol/L (min)",Labs
+KETONES_UA_MAX,Ketones urinalysis (max),Labs
+KETONES_UA_MEAN,Ketones urinalysis (mean,Labs
+KETONES_UA_MEDIAN,Ketones urinalysis (median),Labs
+KETONES_UA_MIN,Ketones urinalysis (min),Labs
+LDL_BSP_MG_MAX,"LDL cholesterol BSP, mg (max)",Labs
+LDL_BSP_MG_MEAN,"LDL cholesterol BSP, mg (mean)",Labs
+LDL_BSP_MG_MEDIAN,"LDL cholesterol BSP, mg (median)",Labs
+LDL_BSP_MG_MIN,"LDL cholesterol BSP, mg (min)",Labs
+MAGNESIUM_BSP_MG_MAX,"Magnesium BSP, mg (max)",Labs
+MAGNESIUM_BSP_MG_MEAN,"Magnesium BSP, mg (mean)",Labs
+MAGNESIUM_BSP_MG_MEDIAN,"Magnesium BSP, mg (median)",Labs
+MAGNESIUM_BSP_MG_MIN,"Magnesium BSP, mg (min)",Labs
+MCHC_BSP_GM_MAX,"MCHC BSP, gm (max)",Labs
+MCHC_BSP_GM_MEAN,"MCHC BSP, gm (mean)",Labs
+MCHC_BSP_GM_MEDIAN,"MCHC BSP, gm (median)",Labs
+MCHC_BSP_GM_MIN,"MCHC BSP, gm (min)",Labs
+MCV_BSP_FL_MAX,"MCV BSP, fL (max)",Labs
+MCV_BSP_FL_MEAN,"MCV BSP, fL (mean)",Labs
+MCV_BSP_FL_MEDIAN,"MCV BSP, fL (median)",Labs
+MCV_BSP_FL_MIN,"MCV BSP, fL (min)",Labs
+NA_BSP_MMOL_MAX,"Sodium BSP, mmol/L (max)",Labs
+NA_BSP_MMOL_MEAN,"Sodium BSP, mmol/L (mean)",Labs
+NA_BSP_MMOL_MEDIAN,"Sodium BSP, mmol/L (median)",Labs
+NA_BSP_MMOL_MIN,"Sodium BSP, mmol/L (min)",Labs
+PHOSPHATE_BSP_MG_MAX,"Phosphate BSP, mg (max)",Labs
+PHOSPHATE_BSP_MG_MEAN,"Phosphate BSP, mg (mean)",Labs
+PHOSPHATE_BSP_MG_MEDIAN,"Phosphate BSP, mg (median)",Labs
+PHOSPHATE_BSP_MG_MIN,"Phosphate BSP, mg (min)",Labs
+PLT_BSP_CNT_MAX,"Platelets BSP, x10*3/uL (max)",Labs
+PLT_BSP_CNT_MEAN,"Platelets BSP, x10*3/uL (mean)",Labs
+PLT_BSP_CNT_MEDIAN,"Platelets BSP, x10*3/uL (median)",Labs
+PLT_BSP_CNT_MIN,"Platelets BSP, x10*3/uL (min)",Labs
+PROTEIN_UA_MAX,Protein urinalysis (max),Labs
+PROTEIN_UA_MEAN,Protein urinalysis (mean),Labs
+PROTEIN_UA_MEDIAN,Protein urinalysis (median),Labs
+PROTEIN_UA_MIN,Protein urinalysis (min),Labs
+PTT_BSP_MAX,PTT BSP (max),Labs
+PTT_BSP_MEAN,PTT BSP (mean),Labs
+PTT_BSP_MEDIAN,PTT BSP (median),Labs
+PTT_BSP_MIN,PTT BSP (min),Labs
+RBC_UA_CNT_MAX,Red blood cell count in urine (max),Labs
+RBC_UA_CNT_MEAN,Red blood cell count in urine (mean),Labs
+RBC_UA_CNT_MEDIAN,Red blood cell count in urine (median),Labs
+RBC_UA_CNT_MIN,Red blood cell count in urine (min),Labs
+SP_GRAVITY_UA_MAX,Urine specific gravity (max),Labs
+SP_GRAVITY_UA_MEAN,Urine specific gravity (mean),Labs
+SP_GRAVITY_UA_MEDIAN,Urine specific gravity (median),Labs
+SP_GRAVITY_UA_MIN,Urine specific gravity (min),Labs
+T4_BSP_UG_MAX,"Thyroxine BSP, ug (max)",Labs
+T4_BSP_UG_MEAN,"Thyroxine BSP, ug (mean)",Labs
+T4_BSP_UG_MEDIAN,"Thyroxine BSP, ug (median)",Labs
+T4_BSP_UG_MIN,"Thyroxine BSP, ug (min)",Labs
+TIBC_BSP_MG_MAX,"TIBC BSP, mg (max)",Labs
+TIBC_BSP_MG_MEAN,"TIBC BSP, mg (mean)",Labs
+TIBC_BSP_MG_MEDIAN,"TIBC BSP, mg (median)",Labs
+TIBC_BSP_MG_MIN,"TIBC BSP, mg (min)",Labs
+TRANSFERRIN_BSP_MG_MAX,"Transferrin BSP, mg (max)",Labs
+TRANSFERRIN_BSP_MG_MEAN,"Transferrin BSP, mg (mean)",Labs
+TRANSFERRIN_BSP_MG_MEDIAN,"Transferrin BSP, mg (median)",Labs
+TRANSFERRIN_BSP_MG_MIN,"Transferrin BSP, mg (min)",Labs
+TRIG_BSP_MG_MAX,"Triglycerides BSP, mg (max)",Labs
+TRIG_BSP_MG_MEAN,"Triglycerides BSP, mg (mean)",Labs
+TRIG_BSP_MG_MEDIAN,"Triglycerides BSP, mg (median)",Labs
+TRIG_BSP_MG_MIN,"Triglycerides BSP, mg (min)",Labs
+TROP_I_BSP_MG_MAX,"Troponin I BSP, mg (max)",Labs
+TROP_I_BSP_MG_MEAN,"Troponin I BSP, mg (mean)",Labs
+TROP_I_BSP_MG_MEDIAN,"Troponin I BSP, mg (median)",Labs
+TROP_I_BSP_MG_MIN,"Troponin I BSP, mg (min)",Labs
+TROP_T_BSP_MG_MAX,"Troponin T BSP, mg (max)",Labs
+TROP_T_BSP_MG_MEAN,"Troponin T BSP, mg (mean)",Labs
+TROP_T_BSP_MG_MEDIAN,"Troponin T BSP, mg (median)",Labs
+TROP_T_BSP_MG_MIN,"Troponin T BSP, mg (min)",Labs
+TSH_BSP_MIU_MAX,"Thyrotropin BSP, mIU/L (max)",Labs
+TSH_BSP_MIU_MEAN,"Thyrotropin BSP, mIU/L (mean)",Labs
+TSH_BSP_MIU_MEDIAN,"Thyrotropin BSP, mIU/L (median)",Labs
+TSH_BSP_MIU_MIN,"Thyrotropin BSP, mIU/L (min)",Labs
+WBC_BSP_CNT_MAX,"Leukocytes BSP, x10*3/uL (max)",Labs
+WBC_BSP_CNT_MEAN,"Leukocytes BSP, x10*3/uL (mean)",Labs
+WBC_BSP_CNT_MEDIAN,"Leukocytes BSP, x10*3/uL (median)",Labs
+WBC_BSP_CNT_MIN,"Leukocytes BSP, x10*3/uL (min)",Labs
+REGEX_ADJ_SLING,Adjustable Sling (AMUS),Primary Procedure Characteristics
+REGEX_UNKNOWN,Unknown Approach,Primary Procedure Characteristics
+REGEX_RETROPUBIC,Retro-Pubic (RPMUS),Primary Procedure Characteristics
+REGEX_SNGL_INC,Single Incision (SIMUS),Primary Procedure Characteristics
+REGEX_TRANSOB,Trans-Obturator (TOMUS),Primary Procedure Characteristics
+REGEX_MESH,Mesh,Primary Procedure Characteristics
+REGEX_NO_MESH,No Mesh,Primary Procedure Characteristics
+REGEX_INDETERMINATE_MESH,Indeterminate Mesh,Primary Procedure Characteristics

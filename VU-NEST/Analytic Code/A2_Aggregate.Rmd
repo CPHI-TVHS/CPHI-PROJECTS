@@ -1,0 +1,1812 @@
+---
+title: "NEST - R2B5 Mesh in Stress Urinary Incontinence: Aggregate Descriptive Statistics for Cohort Which Does Not Exclude Prior Prolapse"
+author: "Author"
+date: "<small>`r Sys.Date()`</small>"
+output: 
+  html_document:
+    toc: yes
+    toc_depth: 2
+    number_sections: true
+    toc_float:
+      collapsed: false
+    code_folding: hide
+    theme: cerulean
+css: rmarkdownstyle.css
+---
+<button id="toc-toggle" type="button" class="btn btn-default btn-xs code-folding-btn pull-right collapsed" onclick="toggletoc()"><span>Outline</span></button>
+<script>
+function toggletoc(){
+$("#TOC").toggle();
+}
+</script>
+```{r setup, echo=FALSE, results='hide'}
+.libPaths("U:/NEST/Analysis/Rlibrary")
+p <- "U://NEST//Analysis//Aggregate"
+setwd(p)
+options(digits=3, width=130, scipen=20, max.print=1500)
+require(Hmisc)
+require(kableExtra)
+require(dplyr)
+require(purrr)
+require(tidyverse)
+require(writexl)
+require(DescTools)
+source('./Functions.R') 
+source('./Ordered_Lists.R')
+label_struct <- read_csv("Label_Structured.csv")
+label_chart <- read_csv("Label_Chart.csv")
+label_compare <- read_csv("Label_Compare.csv")
+# Structured-Data Identified EHR Mesh Cohort
+factor_mesh <- load_factor("Factor_Descriptives_Overall_Not_Restricted_NLP.csv")
+factor_mesh <- merge(factor_mesh, label_struct, by="field", all.x=TRUE)
+num_mesh <- load_numeric("Numeric_Descriptives_Overall_Not_Restricted_NLP.csv")
+num_mesh <- merge(num_mesh, label_struct, by="field", all.x=TRUE)
+# NLP-Identified EHR Mesh Cohort
+factor_mesh_rest <- load_factor("Factor_Descriptives_Overall_Restricted_NLP_Mesh.csv")
+factor_mesh_rest <- merge(factor_mesh_rest, label_struct, by="field", all.x=TRUE)
+num_mesh_rest <- load_numeric("Numeric_Descriptives_Overall_Restricted_NLP_Mesh.csv")
+num_mesh_rest <- merge(num_mesh_rest, label_struct, by="field", all.x=TRUE)
+## Adj Sling
+factor_as_rest <- load_factor("Factor_Descriptives_Adj_Sling_Restricted_NLP_Mesh.csv")
+factor_as_rest <- merge(factor_as_rest, label_struct, by="field", all.x=TRUE)
+num_as_rest <- load_numeric("Numeric_Descriptives_Adj_Sling_Restricted_NLP_Mesh.csv")
+num_as_rest <- merge(num_as_rest, label_struct, by="field", all.x=TRUE)
+## Retropubic
+factor_ret_rest <- load_factor("Factor_Descriptives_Retropubic_Restricted_NLP_Mesh.csv")
+factor_ret_rest <- merge(factor_ret_rest, label_struct, by="field", all.x=TRUE)
+num_ret_rest <- load_numeric("Numeric_Descriptives_Retropubic_Restricted_NLP_Mesh.csv")
+num_ret_rest <- merge(num_ret_rest, label_struct, by="field", all.x=TRUE)
+## Single Incision
+factor_si_rest <- load_factor("Factor_Descriptives_Sngl_Inc_Restricted_NLP_Mesh.csv")
+factor_si_rest <- merge(factor_si_rest, label_struct, by="field", all.x=TRUE)
+num_si_rest <- load_numeric("Numeric_Descriptives_Sngl_Inc_Restricted_NLP_Mesh.csv")
+num_si_rest <- merge(num_si_rest, label_struct, by="field", all.x=TRUE)
+## Transob
+factor_tra_rest <- load_factor("Factor_Descriptives_Transob_Restricted_NLP_Mesh.csv")
+factor_tra_rest <- merge(factor_tra_rest, label_struct, by="field", all.x=TRUE)
+num_tra_rest <- load_numeric("Numeric_Descriptives_Transob_Restricted_NLP_Mesh.csv")
+num_tra_rest <- merge(num_tra_rest, label_struct, by="field", all.x=TRUE)
+## Unknown Approach
+factor_un_rest <- load_factor("Factor_Descriptives_Unknown_Restricted_NLP_Mesh.csv")
+factor_un_rest <- merge(factor_un_rest, label_struct, by="field", all.x=TRUE)
+num_un_rest <- load_numeric("Numeric_Descriptives_Unknown_Restricted_NLP_Mesh.csv")
+num_un_rest <- merge(num_un_rest, label_struct, by="field", all.x=TRUE)
+# Short Chart Review
+factor_short_struct <- load_factor("Factor_Descriptives_SCR_All_Not_Restricted_NLP.csv")
+factor_short_struct <- merge(factor_short_struct, label_chart, by="field", all.x=TRUE)
+factor_short_struct_rest <- load_factor("Factor_Descriptives_SCR_All_Restricted_NLP_Mesh.csv")
+factor_short_struct_rest <- merge(factor_short_struct_rest, label_chart, by="field", all.x=TRUE)
+# NLP-Identified Sample (Full) Chart Review
+factor_full_rest <- load_factor("Factor_Descriptives_FCR_Overall_Restricted_NLP_Mesh.csv")
+factor_full_rest <- merge(factor_full_rest, label_chart, by="field", all.x=TRUE)
+num_full_rest <- load_numeric("Numeric_Descriptives_FCR_Overall_Restricted_NLP_Mesh.csv")
+num_full_rest <- merge(num_full_rest, label_chart, by="field", all.x=TRUE)
+## Adj Sling 
+factor_full_as_rest <- load_factor("Factor_Descriptives_FCR_Adj_Sling_Restricted_NLP_Mesh.csv")
+factor_full_as_rest <- merge(factor_full_as_rest, label_chart, by="field", all.x=TRUE)
+num_full_as_rest <- load_numeric("Numeric_Descriptives_FCR_Adj_Sling_Restricted_NLP_Mesh.csv")
+num_full_as_rest <- merge(num_full_as_rest, label_chart, by="field", all.x=TRUE)
+## Retropubic
+factor_full_ret_rest <- load_factor("Factor_Descriptives_FCR_Retropubic_Restricted_NLP_Mesh.csv")
+factor_full_ret_rest <- merge(factor_full_ret_rest, label_chart, by="field", all.x=TRUE)
+num_full_ret_rest <- load_numeric("Numeric_Descriptives_FCR_Retropubic_Restricted_NLP_Mesh.csv")
+num_full_ret_rest <- merge(num_full_ret_rest, label_chart, by="field", all.x=TRUE)
+## Single Incision
+factor_full_si_rest <- load_factor("Factor_Descriptives_FCR_Sngl_Inc_Restricted_NLP_Mesh.csv")
+factor_full_si_rest <- merge(factor_full_si_rest, label_chart, by="field", all.x=TRUE)
+num_full_si_rest <- load_numeric("Numeric_Descriptives_FCR_Sngl_Inc_Restricted_NLP_Mesh.csv")
+num_full_si_rest <- merge(num_full_si_rest, label_chart, by="field", all.x=TRUE)
+## Transob
+factor_full_tra_rest <- load_factor("Factor_Descriptives_FCR_Transob_Restricted_NLP_Mesh.csv")
+factor_full_tra_rest <- merge(factor_full_tra_rest, label_chart, by="field", all.x=TRUE)
+num_full_tra_rest <- load_numeric("Numeric_Descriptives_FCR_Transob_Restricted_NLP_Mesh.csv")
+num_full_tra_rest <- merge(num_full_tra_rest, label_chart, by="field", all.x=TRUE)
+## Unknown
+factor_full_un_rest <- load_factor("Factor_Descriptives_FCR_Unknown_Restricted_NLP_Mesh.csv")
+factor_full_un_rest <- merge(factor_full_un_rest, label_chart, by="field", all.x=TRUE)
+num_full_un_rest <- load_numeric("Numeric_Descriptives_FCR_Unknown_Restricted_NLP_Mesh.csv")
+num_full_un_rest <- merge(num_full_un_rest, label_chart, by="field", all.x=TRUE)
+# Compare NLP-identified structured vs. full chart review
+factor_comp_sfcr_rest <- load_comp("CompareSFCR_Factor_Overall_Restricted_NLP_Mesh.csv")
+factor_comp_sfcr_rest <- merge(factor_comp_sfcr_rest, label_compare, by="field", all.x=TRUE)
+num_comp_sfcr_rest <- load_comp("CompareSFCR_Numeric_Overall_Restricted_NLP_Mesh.csv")
+num_comp_sfcr_rest <- merge(num_comp_sfcr_rest, label_compare, by="field", all.x=TRUE)
+## Adj Sling
+factor_comp_sfcr_as_rest <- load_comp("CompareSFCR_Factor_Adj_Sling_Restricted_NLP_Mesh.csv")
+factor_comp_sfcr_as_rest <- merge(factor_comp_sfcr_as_rest, label_compare, by="field", all.x=TRUE)
+num_comp_sfcr_as_rest <- load_comp("CompareSFCR_Numeric_Adj_Sling_Restricted_NLP_Mesh.csv")
+num_comp_sfcr_as_rest <- merge(num_comp_sfcr_as_rest, label_compare, by="field", all.x=TRUE)
+## Retropubic
+factor_comp_sfcr_ret_rest <- load_comp("CompareSFCR_Factor_Retropubic_Restricted_NLP_Mesh.csv")
+factor_comp_sfcr_ret_rest <- merge(factor_comp_sfcr_ret_rest, label_compare, by="field", all.x=TRUE)
+num_comp_sfcr_ret_rest <- load_comp("CompareSFCR_Numeric_Retropubic_Restricted_NLP_Mesh.csv")
+num_comp_sfcr_ret_rest <- merge(num_comp_sfcr_ret_rest, label_compare, by="field", all.x=TRUE)
+## Single Incision
+factor_comp_sfcr_si_rest <- load_comp("CompareSFCR_Factor_Sngl_Inc_Restricted_NLP_Mesh.csv")
+factor_comp_sfcr_si_rest <- merge(factor_comp_sfcr_si_rest, label_compare, by="field", all.x=TRUE)
+num_comp_sfcr_si_rest <- load_comp("CompareSFCR_Numeric_Sngl_Inc_Restricted_NLP_Mesh.csv")
+num_comp_sfcr_si_rest <- merge(num_comp_sfcr_si_rest, label_compare, by="field", all.x=TRUE)
+## Transob
+factor_comp_sfcr_tra_rest <- load_comp("CompareSFCR_Factor_Transob_Restricted_NLP_Mesh.csv")
+factor_comp_sfcr_tra_rest <- merge(factor_comp_sfcr_tra_rest, label_compare, by="field", all.x=TRUE)
+num_comp_sfcr_tra_rest <- load_comp("CompareSFCR_Numeric_Transob_Restricted_NLP_Mesh.csv")
+num_comp_sfcr_tra_rest <- merge(num_comp_sfcr_tra_rest, label_compare, by="field", all.x=TRUE)
+## Unknown
+factor_comp_sfcr_un_rest <- load_comp("CompareSFCR_Factor_Unknown_Restricted_NLP_Mesh.csv")
+factor_comp_sfcr_un_rest <- merge(factor_comp_sfcr_un_rest, label_compare, by="field", all.x=TRUE)
+num_comp_sfcr_un_rest <- load_comp("CompareSFCR_Numeric_Unknown_Restricted_NLP_Mesh.csv")
+num_comp_sfcr_un_rest <- merge(num_comp_sfcr_un_rest, label_compare, by="field", all.x=TRUE)
+# Compare NLP Approach & Mesh vs. chart review (gold standard)
+factor_comp_rscr <- load_comp("CompareRSCR_Factor_Overall_Not_Restricted_NLP.csv")
+factor_comp_rscr <- merge(factor_comp_rscr, label_compare, by="field", all.x=TRUE)
+# Compare EHR Mesh vs. chart review (gold standard)
+factor_comp_sscr <- load_comp("CompareSSCR_Factor_Overall_Not_Restricted_NLP.csv")
+factor_comp_sscr <- merge(factor_comp_sscr, label_compare, by="field", all.x=TRUE)
+# Compare EHR Mesh vs. NLP (gold standard)
+factor_comp_rs <- load_comp("CompareRS_Factor_Overall_Not_Restricted_NLP.csv")
+factor_comp_rs <- merge(factor_comp_rs, label_compare, by="field", all.x=TRUE)
+Hmisc::knitrSet(lang='markdown', fig.path='png/', fig.align='left', w=6.5, h=2)
+mu <- markupSpecs$html
+cap <- mu$cap
+lcap <- mu$lcap
+```
+# Methods
+This final report includes data from Cornell, Lahey, Mayo, VUMC, and Yale. Patients were included if they were women aged 18 years or greater, underwent a procedure for stress urinary incontinence (SUI) with or without mesh implantation after 1/1/2010, and had at least one primary care, OB/GYN, or Urology visit in the year prior to the procedure. Patients were excluded for prior SUI surgery or prior diagnosis of a urethral diverticulum or any urinary-genital tract fistula in the 90 days prior to the index surgery. For patients with multiple procedures for SUI, the first procedure was selected. Small counts between 1 and 10 are censored as "[1-10]" per guidelines to prevent re-identification of patients. 
+
+The site-specific descriptive statistics were calculated by each of the five sites. VUMC merged the results and generated the aggregate descriptive statistics. Weighted means and weighted standard deviations were calculated using the wtd.mean and wtd.var functions from the R package Hmisc, where the weights are the proportion of patients contributed from each site out of the total N.
+
+# Sites Included in Aggregate Report
+```{r, results='asis'}
+nsites <- 5 #updated 7/17/22
+nsites_c <- 5
+s <- c("Cornell", "Lahey", "Mayo", "VUMC", "Yale")
+y <- c("Yes", "Yes", "Yes", "Yes", "Yes")
+sy <- cbind(s,y)
+colnames(sy) <- c("Site", "Included")
+knitr::kable(sy, align='lc', "html", col.names=colnames(sy), escape=FALSE,
+             table.attr='class="table-fixed-header"') %>%
+    kable_styling(position="left", full_width=FALSE, bootstrap_options=c("striped", "condensed"))
+```
+
+# Flowchart for inclusion and exclusion criteria overall and each site within the NLP-integrated cohort
+Columns summarize N or n excluded (cumulative n excluded). 
+```{r}
+flow_chart <- list.files(path=p, pattern = "Flowchart.csv", full.names=TRUE) %>%
+  map_df(~read_csv(.x, col_types = cols(.default="c"))) 
+flow_chart <- data.frame(flow_chart)
+# Some sites had greater number no/indeterminate Mesh than number with prior prolapse
+flow_chart[35,2] <- 0 #Mayo
+flow_chart[59,2] <- 0 #Yale
+flow_chart_site <- flow_chart %>%
+  group_by(X1) %>%
+  gather("n_dropped", key=variable, value=number) %>%
+  unite(combi, variable, site) %>%
+  spread(combi, number)
+flow_chart_agg <- flow_chart %>%
+  group_by(X1) %>%
+  mutate(n_dropped = ifelse(n_dropped == "[1-10]", 1, as.numeric(n_dropped)),
+         aggregate_n_dropped = cumsum(n_dropped))
+tf <- data.frame(tail(flow_chart_agg, n=length(flow_chart_agg$X1)/nsites_c))
+flow_final <- merge(tf, flow_chart_site, all.x=TRUE, by="X1")
+flow_final <- flow_final[match(order_flow, flow_final$X1),]
+flow_final <- flow_final[-c(11, 12),-c(2,3)] #Drop rows which exclude prior prolapse & restrict NLP mesh
+flow_cumul <- flow_final %>%
+  mutate(n_dropped_Cornell_r = ifelse(n_dropped_Cornell == "[1-10]", 1, as.numeric(n_dropped_Cornell)),
+         n_dropped_Mayo_r = ifelse(n_dropped_Mayo == "[1-10]", 1, as.numeric(n_dropped_Mayo)),
+         n_dropped_Lahey_r = ifelse(n_dropped_Lahey == "[1-10]", 1, as.numeric(n_dropped_Lahey)),
+         n_dropped_VUMC_r = ifelse(n_dropped_VUMC == "[1-10]", 1, as.numeric(n_dropped_VUMC)),
+         n_dropped_Yale_r = ifelse(n_dropped_Yale == "[1-10]", 1, as.numeric(n_dropped_Yale)))
+flow_cumul <- flow_cumul %>%
+  mutate(aggregate_n_dropped_cs = cumsum(aggregate_n_dropped),
+         n_dropped_Cornell_cs = cumsum(n_dropped_Cornell_r),
+         n_dropped_Mayo_cs = cumsum(n_dropped_Mayo_r),
+         n_dropped_Lahey_cs = cumsum(n_dropped_Lahey_r),
+         n_dropped_VUMC_cs = cumsum(n_dropped_VUMC_r),
+         n_dropped_Yale_cs = cumsum(n_dropped_Yale_r))
+flow_cumul <- flow_cumul %>%
+  mutate(print_Overall = paste(aggregate_n_dropped, " (", aggregate_n_dropped_cs, ")", sep=""),
+         print_Cornell = paste(n_dropped_Cornell, " (", n_dropped_Cornell_cs, ")", sep=""),
+         print_Lahey = paste(n_dropped_Lahey, " (", n_dropped_Lahey_cs, ")", sep=""),
+         print_Mayo = paste(n_dropped_Mayo, " (", n_dropped_Mayo_cs, ")", sep=""),
+         print_VUMC = paste(n_dropped_VUMC, " (", n_dropped_VUMC_cs, ")", sep=""),
+         print_Yale = paste(n_dropped_Yale, " (", n_dropped_Yale_cs, ")", sep=""))
+exc_rest <- flow_cumul[10,c("aggregate_n_dropped_cs", "n_dropped_Cornell_cs", "n_dropped_Lahey_cs",   
+                            "n_dropped_Mayo_cs", "n_dropped_VUMC_cs", "n_dropped_Yale_cs")]
+flow_cumul <- flow_cumul[,c(1,19:24)]
+tot_rest <- matrix(c(4016, 1059, 535, 1177, 938, 307), nrow=1, ncol=6, byrow=TRUE)
+first_row <- exc_rest + tot_rest
+tot_rest <- cbind("Count of all procedures included (N)", tot_rest)
+first_row <- cbind("Include women aged 18y+, had surgery for stress urinary incontinence with or without mesh implantation after 1/1/2010, and had 1+ primary care, OB/GYN, or Urology visit(s) in the year prior to the procedure (N)", first_row)
+colnames(tot_rest) <- colnames(flow_cumul)
+colnames(first_row) <- colnames(flow_cumul)
+flow_final <- rbind(first_row, flow_cumul, tot_rest)
+colnames(flow_final) <- gsub('print_', '', colnames(flow_final))
+colnames(flow_final) <- gsub('X1', 'Inclusion/Exclusion Criteria', colnames(flow_final))
+knitr::kable(flow_final, align='lcccccc', "html", col.names=colnames(flow_final), escape=FALSE,
+             table.attr='class="table-fixed-header"') %>%
+    kable_styling(position="left", full_width=TRUE, bootstrap_options=c("striped", "condensed"))
+```
+
+# Results of Structured-Data Identified EHR Mesh Cohort
+## Overall
+### Demographics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh, dat_numeric=num_mesh,
+           gp="Demographics", fo=order_dem_fac, no=order_dem_num,
+           ns=nsites_c)
+```
+
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh, dat_numeric=num_mesh,
+           gp="Prior Medical History", fo=order_med_fac, no=order_med_num,
+           ns=nsites_c)
+```
+
+### Active Medications
+Drug Class ATC
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh, dat_numeric=num_mesh,
+           gp="Active Medications", fo=order_drug_fac, no=order_drug_num,
+           ns=nsites_c)
+```
+
+### Labs
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh, dat_numeric=num_mesh, 
+           gp="Labs", fo=order_lab_fac, no=order_lab_num,
+           ns=nsites_c)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh, dat_numeric=num_mesh,
+           gp="Primary Procedure Characteristics", fo=order_nlp_fac, no=order_nlp_num,
+           ns=nsites_c)
+```
+
+### Outcomes
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh, dat_numeric=num_mesh,
+           gp="Outcomes", fo=order_out_fac, no=order_out_num,
+           ns=nsites_c)
+```
+
+# Results of NLP-Identified EHR Mesh Cohort
+## Overall
+### Demographics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. 
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh_rest, dat_numeric=num_mesh_rest,
+           gp="Demographics", fo=order_dem_fac, no=order_dem_num,
+           ns=nsites_c)
+```
+
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. 
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh_rest, dat_numeric=num_mesh_rest,
+           gp="Prior Medical History", fo=order_med_fac, no=order_med_num,
+           ns=nsites_c)
+```
+
+### Active Medications
+Drug Class ATC
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. 
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh_rest, dat_numeric=num_mesh_rest,
+           gp="Active Medications", fo=order_drug_fac, no=order_drug_num,
+           ns=nsites_c)
+```
+
+### Labs
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. 
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh_rest, dat_numeric=num_mesh_rest, 
+           gp="Labs", fo=order_lab_fac, no=order_lab_num,
+           ns=nsites_c)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. 
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh_rest, dat_numeric=num_mesh_rest,
+           gp="Primary Procedure Characteristics", fo=order_nlp_fac, no=order_nlp_num,
+           ns=nsites_c)
+```
+
+### Outcomes
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. 
+```{r, results='asis'}
+print_miss(dat_factor=factor_mesh_rest, dat_numeric=num_mesh_rest,
+           gp="Outcomes", fo=order_out_fac, no=order_out_num,
+           ns=nsites_c)
+```
+
+## NLP Approach: Adjustable Sling (AMUS)
+### Demographics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_as_rest, dat_numeric=num_as_rest,
+           gp="Demographics", fo=order_dem_fac, no=order_dem_num)
+```
+
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_as_rest, dat_numeric=num_as_rest,
+           gp="Prior Medical History", fo=order_med_fac, no=order_med_num)
+```
+
+### Active Medications
+Drug Class ATC
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_as_rest, dat_numeric=num_as_rest,
+           gp="Active Medications", fo=order_drug_fac, no=order_drug_num)
+```
+
+### Labs
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_as_rest, dat_numeric=num_as_rest, 
+           gp="Labs", fo=order_lab_fac, no=order_lab_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_as_rest, dat_numeric=num_as_rest,
+           gp="Primary Procedure Characteristics", fo=order_nlp_fac, no=order_nlp_num)
+```
+
+### Outcomes
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_as_rest, dat_numeric=num_as_rest,
+           gp="Outcomes", fo=order_out_fac, no=order_out_num)
+```
+
+## NLP Approach: Retro-Pubic (RPMUS)
+### Demographics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_ret_rest, dat_numeric=num_ret_rest,
+           gp="Demographics", fo=order_dem_fac, no=order_dem_num)
+```
+
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_ret_rest, dat_numeric=num_ret_rest,
+           gp="Prior Medical History", fo=order_med_fac, no=order_med_num)
+```
+
+### Active Medications
+Drug Class ATC
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_ret_rest, dat_numeric=num_ret_rest,
+           gp="Active Medications", fo=order_drug_fac, no=order_drug_num)
+```
+
+### Labs
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_ret_rest, dat_numeric=num_ret_rest, 
+           gp="Labs", fo=order_lab_fac, no=order_lab_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_ret_rest, dat_numeric=num_ret_rest,
+           gp="Primary Procedure Characteristics", fo=order_nlp_fac, no=order_nlp_num)
+```
+
+### Outcomes
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_ret_rest, dat_numeric=num_ret_rest,
+           gp="Outcomes", fo=order_out_fac, no=order_out_num)
+```
+
+## NLP Approach: Single Incision (SIMUS)
+### Demographics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_si_rest, dat_numeric=num_si_rest,
+           gp="Demographics", fo=order_dem_fac, no=order_dem_num)
+```
+
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_si_rest, dat_numeric=num_si_rest,
+           gp="Prior Medical History", fo=order_med_fac, no=order_med_num)
+```
+
+### Active Medications
+Drug Class ATC
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_si_rest, dat_numeric=num_si_rest,
+           gp="Active Medications", fo=order_drug_fac, no=order_drug_num)
+```
+
+### Labs
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_si_rest, dat_numeric=num_si_rest, 
+           gp="Labs", fo=order_lab_fac, no=order_lab_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_si_rest, dat_numeric=num_si_rest,
+           gp="Primary Procedure Characteristics", fo=order_nlp_fac, no=order_nlp_num)
+```
+
+### Outcomes
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_si_rest, dat_numeric=num_si_rest,
+           gp="Outcomes", fo=order_out_fac, no=order_out_num)
+```
+
+## NLP Approach: Trans-Obturator (TOMUS)
+### Demographics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_tra_rest, dat_numeric=num_tra_rest,
+           gp="Demographics", fo=order_dem_fac, no=order_dem_num)
+```
+
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_tra_rest, dat_numeric=num_tra_rest,
+           gp="Prior Medical History", fo=order_med_fac, no=order_med_num)
+```
+
+### Active Medications
+Drug Class ATC
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_tra_rest, dat_numeric=num_tra_rest,
+           gp="Active Medications", fo=order_drug_fac, no=order_drug_num)
+```
+
+### Labs
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_tra_rest, dat_numeric=num_tra_rest, 
+           gp="Labs", fo=order_lab_fac, no=order_lab_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_tra_rest, dat_numeric=num_tra_rest,
+           gp="Primary Procedure Characteristics", fo=order_nlp_fac, no=order_nlp_num)
+```
+
+### Outcomes
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_tra_rest, dat_numeric=num_tra_rest,
+           gp="Outcomes", fo=order_out_fac, no=order_out_num)
+```
+
+## NLP Approach: Unknown
+### Demographics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_un_rest, dat_numeric=num_un_rest,
+           gp="Demographics", fo=order_dem_fac, no=order_dem_num)
+```
+
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_un_rest, dat_numeric=num_un_rest,
+           gp="Prior Medical History", fo=order_med_fac, no=order_med_num)
+```
+
+### Active Medications
+Drug Class ATC
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_un_rest, dat_numeric=num_un_rest,
+           gp="Active Medications", fo=order_drug_fac, no=order_drug_num)
+```
+
+### Labs
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_un_rest, dat_numeric=num_un_rest, 
+           gp="Labs", fo=order_lab_fac, no=order_lab_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_un_rest, dat_numeric=num_un_rest,
+           gp="Primary Procedure Characteristics", fo=order_nlp_fac, no=order_nlp_num)
+```
+
+### Outcomes
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_un_rest, dat_numeric=num_un_rest,
+           gp="Outcomes", fo=order_out_fac, no=order_out_num)
+```
+
+# Aggregate Results of NLP-Identified EHR Mesh Cohort
+## Demographics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. Subgroup n's may not sum to overall n due to censoring.
+```{r, results='asis'}
+print_miss(fmr=factor_mesh_rest, far=factor_as_rest,
+           frr=factor_ret_rest, fir=factor_si_rest,
+           ftr=factor_tra_rest, fur=factor_un_rest,
+           nmr=num_mesh_rest, nar=num_as_rest,
+           nrr=num_ret_rest, nir=num_si_rest,
+           ntr=num_tra_rest, nur=num_un_rest,
+           gp="Demographics", fo=order_dem_fac, no=order_dem_num, 
+           agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+## Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. Subgroup n's may not sum to overall n due to censoring. 
+```{r, results='asis'}
+print_miss(fmr=factor_mesh_rest, far=factor_as_rest,
+           frr=factor_ret_rest, fir=factor_si_rest,
+           ftr=factor_tra_rest, fur=factor_un_rest,
+           nmr=num_mesh_rest, nar=num_as_rest,
+           nrr=num_ret_rest, nir=num_si_rest,
+           ntr=num_tra_rest, nur=num_un_rest,
+           gp="Prior Medical History", fo=order_med_fac, no=order_med_num, 
+           agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+## Active Medications
+Drug Class ATC
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. Subgroup n's may not sum to overall n due to censoring. 
+```{r, results='asis'}
+print_miss(fmr=factor_mesh_rest, far=factor_as_rest,
+           frr=factor_ret_rest, fir=factor_si_rest,
+           ftr=factor_tra_rest, fur=factor_un_rest,
+           nmr=num_mesh_rest, nar=num_as_rest,
+           nrr=num_ret_rest, nir=num_si_rest,
+           ntr=num_tra_rest, nur=num_un_rest,
+           gp="Active Medications", fo=order_drug_fac, no=order_drug_num, 
+           agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+## Labs
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. Subgroup n's may not sum to overall n due to censoring. 
+```{r, results='asis'}
+print_miss(fmr=factor_mesh_rest, far=factor_as_rest,
+           frr=factor_ret_rest, fir=factor_si_rest,
+           ftr=factor_tra_rest, fur=factor_un_rest,
+           nmr=num_mesh_rest, nar=num_as_rest,
+           nrr=num_ret_rest, nir=num_si_rest,
+           ntr=num_tra_rest, nur=num_un_rest,
+           gp="Labs", fo=order_lab_fac, no=order_lab_num, 
+           agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+## Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. Subgroup n's may not sum to overall n due to censoring. 
+```{r, results='asis'}
+print_miss(fmr=factor_mesh_rest, far=factor_as_rest,
+           frr=factor_ret_rest, fir=factor_si_rest,
+           ftr=factor_tra_rest, fur=factor_un_rest,
+           nmr=num_mesh_rest, nar=num_as_rest,
+           nrr=num_ret_rest, nir=num_si_rest,
+           ntr=num_tra_rest, nur=num_un_rest,
+           gp="Primary Procedure Characteristics", fo=order_nlp_fac, 
+           no=order_nlp_num, agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+## Outcomes
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. Subgroup n's may not sum to overall n due to censoring. 
+```{r, results='asis'}
+print_miss(fmr=factor_mesh_rest, far=factor_as_rest,
+           frr=factor_ret_rest, fir=factor_si_rest,
+           ftr=factor_tra_rest, fur=factor_un_rest,
+           nmr=num_mesh_rest, nar=num_as_rest,
+           nrr=num_ret_rest, nir=num_si_rest,
+           ntr=num_tra_rest, nur=num_un_rest,
+           gp="Outcomes", fo=order_out_fac, no=order_out_num, 
+           agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+# Results of Structured Data-Identified Short Chart Review
+## Primary Procedure Characteristics
+Columns summarize n (%) and [missing count].
+```{r, results='asis'}
+ra <- prep_miss_site(factor_short_struct, grouping="Primary Procedure Characteristics",
+                     order_gp=order_chart_short, n_sites=nsites_c, fac=TRUE)
+knitr::kable(ra, align='lccccc', "html", col.names=colnames(ra), escape=FALSE,
+             table.attr='class="table-fixed-header"') %>%
+    kable_styling(position="left", full_width=TRUE, bootstrap_options=c("striped", "hover", "condensed")) %>%
+    scroll_box(height="500px")
+```
+
+# Results of NLP-Identified Short Chart Review
+## Primary Procedure Characteristics
+Columns summarize n (%) and [missing count]. 
+```{r, results='asis'}
+ra <- prep_miss_site(factor_short_struct_rest, grouping="Primary Procedure Characteristics",
+                     order_gp=order_chart_short, n_sites=nsites_c, fac=TRUE)
+knitr::kable(ra, align='lccccc', "html", col.names=colnames(ra), escape=FALSE,
+             table.attr='class="table-fixed-header"') %>%
+    kable_styling(position="left", full_width=TRUE, bootstrap_options=c("striped", "hover", "condensed")) %>%
+    scroll_box(height="500px")
+```
+
+# Aggregate Results of NLP-Identified Short Chart Review
+## Primary Procedure Characteristics
+Columns summarize n (%) and [missing count]. 
+```{r, results='asis'}
+alldat=factor_short_struct_rest
+grouping="Primary Procedure Characteristics"
+order_gp=order_chart_short
+nsic=nsites_c
+# Overall
+rasc <- alldat[alldat$group == grouping,]
+rasc <- rasc[with(rasc, order(site)),]
+rasc <- rasc %>%
+  group_by(label) %>%
+  mutate(n_nonmiss = ifelse(n_nonmiss == "[1-10]", 1, as.numeric(n_nonmiss)),
+         aggregate_n_missing = cumsum(n_missing),
+         n_yes = ifelse(n_yes == "[1-10]", 1, as.numeric(n_yes)),
+         aggregate_n_yes = cumsum(n_yes),
+         aggregate_n_nonmiss = cumsum(n_nonmiss),
+         aggregate_perc_yes = format(round(100*(aggregate_n_yes / aggregate_n_nonmiss), digits=0), nsms=0),
+         print_Overall = paste(aggregate_n_yes, " (", aggregate_perc_yes, "%); [", 
+                               aggregate_n_missing, "]", sep=""))
+rasc_cut <- data.frame(tail(rasc, n=length(rasc$label)/nsic))
+rasc_cut <- rasc_cut[match(order_gp, rasc_cut$field),]
+rasc_sub <- rasc_cut[, c("label", "print_Overall")]
+colnames(rasc_sub) <- c("Field", "Overall")
+knitr::kable(rasc_sub, align='lccccc', "html", col.names=colnames(rasc_sub), escape=FALSE,
+               table.attr='class="table-fixed-header"') %>%
+    kable_styling(position="left", full_width=TRUE, bootstrap_options=c("striped", "hover", "condensed")) %>%
+    scroll_box(height="500px")
+```
+
+# Results of NLP-Identified Sample Chart Review
+## Overall
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. 
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_rest, dat_numeric=num_full_rest, gp="Prior Medical History",
+           fo=order_chart_med_fac, no=order_chart_med_num, ns=nsites_c)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. 
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_rest, dat_numeric=num_full_rest, gp="Primary Procedure Characteristics",
+           fo=order_chart_pro_fac, no=order_chart_pro_num, ns=nsites_c)
+```
+
+### Outcomes 
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. 
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_rest, dat_numeric=num_full_rest, gp="Outcomes", 
+           fo=order_chart_out_fac, no=order_chart_out_num, ns=nsites_c)
+```
+
+## NLP Approach: Adjustable Sling (AMUS)
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_as_rest, dat_numeric=num_full_as_rest, gp="Prior Medical History",
+           fo=order_chart_med_fac, no=order_chart_med_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_as_rest, dat_numeric=num_full_as_rest, gp="Primary Procedure Characteristics",
+           fo=order_chart_pro_fac, no=order_chart_pro_num)
+```
+
+### Outcomes 
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_as_rest, dat_numeric=num_full_as_rest, gp="Outcomes", 
+           fo=order_chart_out_fac, no=order_chart_out_num)
+```
+
+## NLP Approach: Retro-Pubic (RPMUS)
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_ret_rest, dat_numeric=num_full_ret_rest, gp="Prior Medical History",
+           fo=order_chart_med_fac, no=order_chart_med_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_ret_rest, dat_numeric=num_full_ret_rest, gp="Primary Procedure Characteristics",
+           fo=order_chart_pro_fac, no=order_chart_pro_num)
+```
+
+### Outcomes 
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_ret_rest, dat_numeric=num_full_ret_rest, gp="Outcomes", 
+           fo=order_chart_out_fac, no=order_chart_out_num)
+```
+
+## NLP Approach: Single Incision (SIMUS)
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_si_rest, dat_numeric=num_full_si_rest, gp="Prior Medical History",
+           fo=order_chart_med_fac, no=order_chart_med_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_si_rest, dat_numeric=num_full_si_rest, gp="Primary Procedure Characteristics",
+           fo=order_chart_pro_fac, no=order_chart_pro_num)
+```
+
+### Outcomes 
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_si_rest, dat_numeric=num_full_si_rest, gp="Outcomes", 
+           fo=order_chart_out_fac, no=order_chart_out_num)
+```
+
+## NLP Approach: Trans-Obturator (TOMUS)
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_tra_rest, dat_numeric=num_full_tra_rest, gp="Prior Medical History",
+           fo=order_chart_med_fac, no=order_chart_med_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_tra_rest, dat_numeric=num_full_tra_rest, gp="Primary Procedure Characteristics",
+           fo=order_chart_pro_fac, no=order_chart_pro_num)
+```
+
+### Outcomes 
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_tra_rest, dat_numeric=num_full_tra_rest, gp="Outcomes", 
+           fo=order_chart_out_fac, no=order_chart_out_num)
+```
+
+## NLP Approach: Unknown
+### Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_un_rest, dat_numeric=num_full_un_rest, gp="Prior Medical History",
+           fo=order_chart_med_fac, no=order_chart_med_num)
+```
+
+### Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_un_rest, dat_numeric=num_full_un_rest, gp="Primary Procedure Characteristics",
+           fo=order_chart_pro_fac, no=order_chart_pro_num)
+```
+
+### Outcomes 
+Columns summarize n (%) or mean (SD) and [missing count], where applicable.
+```{r, results='asis'}
+print_miss(dat_factor=factor_full_un_rest, dat_numeric=num_full_un_rest, gp="Outcomes", 
+           fo=order_chart_out_fac, no=order_chart_out_num)
+```
+
+# Aggregate Results of NLP-Identified Sample Chart Review
+## Prior Medical History
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. Subgroup n's may not sum to overall n due to censoring. 
+```{r, results='asis'}
+print_miss(fmr=factor_full_rest, far=factor_full_as_rest,
+           frr=factor_full_ret_rest, fir=factor_full_si_rest,
+           ftr=factor_full_tra_rest, fur=factor_full_un_rest,
+           nmr=num_full_rest, nar=num_full_as_rest,
+           nrr=num_full_ret_rest, nir=num_full_si_rest,
+           ntr=num_full_tra_rest, nur=num_full_un_rest,
+           gp="Prior Medical History", fo=order_chart_med_fac, 
+           no=order_chart_med_num, agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+## Primary Procedure Characteristics
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. Subgroup n's may not sum to overall n due to censoring. 
+```{r, results='asis'}
+print_miss(fmr=factor_full_rest, far=factor_full_as_rest,
+           frr=factor_full_ret_rest, fir=factor_full_si_rest,
+           ftr=factor_full_tra_rest, fur=factor_full_un_rest,
+           nmr=num_full_rest, nar=num_full_as_rest,
+           nrr=num_full_ret_rest, nir=num_full_si_rest,
+           ntr=num_full_tra_rest, nur=num_full_un_rest,
+           gp="Primary Procedure Characteristics", fo=order_chart_pro_fac, 
+           no=order_chart_pro_num, agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+## Outcomes
+Columns summarize n (%) or mean (SD) and [missing count], where applicable. Subgroup n's may not sum to overall n due to censoring. 
+```{r, results='asis'}
+print_miss(fmr=factor_full_rest, far=factor_full_as_rest,
+           frr=factor_full_ret_rest, fir=factor_full_si_rest,
+           ftr=factor_full_tra_rest, fur=factor_full_un_rest,
+           nmr=num_full_rest, nar=num_full_as_rest,
+           nrr=num_full_ret_rest, nir=num_full_si_rest,
+           ntr=num_full_tra_rest, nur=num_full_un_rest,
+           gp="Outcomes", fo=order_chart_out_fac, 
+           no=order_chart_out_num, agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+# Chart Review Validation of NLP-Identified EHR Mesh Cohort
+## Data Availability by Site
+### Overall
+#### Present in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both present",
+           agg=FALSE, ns=nsites_c)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both present",
+           agg=FALSE, ns=nsites_c)
+```
+
+##### Outcomes
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both present",
+           agg=FALSE, ns=nsites_c)
+```
+
+#### Present in Structured Data Only
+##### Prior Medical History
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="structured only",
+           agg=FALSE, ns=nsites_c)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="structured only",
+           agg=FALSE, ns=nsites_c)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="structured only",
+           agg=FALSE, ns=nsites_c)
+```
+
+#### Present in Chart Review Data Only
+##### Prior Medical History
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="chart only",
+           agg=FALSE, ns=nsites_c)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="chart only",
+           agg=FALSE, ns=nsites_c)
+```
+
+##### Outcomes
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="chart only",
+           agg=FALSE, ns=nsites_c)
+```
+
+#### Null in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both null",
+           agg=FALSE, ns=nsites_c)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both null",
+           agg=FALSE, ns=nsites_c)
+```
+
+##### Outcomes
+Columns summarize n (%). 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both null",
+           agg=FALSE, ns=nsites_c)
+```
+
+### NLP Approach: Adjustable Sling (AMUS)
+#### Present in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Structured Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Chart Review Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Null in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+### NLP Approach: Retro-Pubic (RPMUS)
+#### Present in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Structured Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Chart Review Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Null in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+### NLP Approach: Single Incision (SIMUS)
+#### Present in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Structured Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Chart Review Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Null in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+### NLP Approach: Trans-Obturator (TOMUS)
+#### Present in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Structured Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Chart Review Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Null in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+### NLP Approach: Unknown
+#### Present in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both present",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Structured Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="structured only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Present in Chart Review Data Only
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="chart only",
+           agg=FALSE, ns=nsites)
+```
+
+#### Null in Both Structured and Chart Review Data
+##### Prior Medical History
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Prior Medical History",
+           fo=order_comp_med_fac, no=order_comp_med_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Primary Procedure Characteristics
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Primary Procedure Characteristics",
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+##### Outcomes
+Columns summarize n (%)
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Outcomes",
+           fo=order_comp_out_fac, no=order_comp_out_num, c="both null",
+           agg=FALSE, ns=nsites)
+```
+
+## Concordance by Site
+### Overall
+#### Prior Medical History
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_rest, dat_numeric=num_comp_sfcr_rest,
+              gp="Prior Medical History", fo=order_comp_med_fac,
+              no=order_comp_med_num)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_rest, dat_numeric=num_comp_sfcr_rest,
+              gp="Primary Procedure Characteristics", fo=order_comp_pro_fac,
+              no=order_comp_pro_num)
+```
+
+#### Outcomes
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_rest, dat_numeric=num_comp_sfcr_rest,
+              gp="Outcomes", fo=order_comp_out_fac,
+              no=order_comp_out_num)
+```
+
+### NLP Approach: Adjustable Sling (AMUS)
+#### Prior Medical History
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_as_rest, dat_numeric=num_comp_sfcr_as_rest,
+              gp="Prior Medical History", fo=order_comp_med_fac,
+              no=order_comp_med_num)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_as_rest, dat_numeric=num_comp_sfcr_as_rest,
+              gp="Primary Procedure Characteristics", fo=order_comp_pro_fac,
+              no=order_comp_pro_num)
+```
+
+#### Outcomes
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_as_rest, dat_numeric=num_comp_sfcr_as_rest,
+              gp="Outcomes", fo=order_comp_out_fac,
+              no=order_comp_out_num)
+```
+
+### NLP Approach: Retro-Pubic (RPMUS)
+#### Prior Medical History
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_ret_rest, dat_numeric=num_comp_sfcr_ret_rest,
+              gp="Prior Medical History", fo=order_comp_med_fac,
+              no=order_comp_med_num)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_ret_rest, dat_numeric=num_comp_sfcr_ret_rest,
+              gp="Primary Procedure Characteristics", fo=order_comp_pro_fac,
+              no=order_comp_pro_num)
+```
+
+#### Outcomes
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_ret_rest, dat_numeric=num_comp_sfcr_ret_rest,
+              gp="Outcomes", fo=order_comp_out_fac,
+              no=order_comp_out_num)
+```
+
+### NLP Approach: Single Incision (SIMUS)
+#### Prior Medical History
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_si_rest, dat_numeric=num_comp_sfcr_si_rest,
+              gp="Prior Medical History", fo=order_comp_med_fac,
+              no=order_comp_med_num)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_si_rest, dat_numeric=num_comp_sfcr_si_rest,
+              gp="Primary Procedure Characteristics", fo=order_comp_pro_fac,
+              no=order_comp_pro_num)
+```
+
+#### Outcomes
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_si_rest, dat_numeric=num_comp_sfcr_si_rest,
+              gp="Outcomes", fo=order_comp_out_fac,
+              no=order_comp_out_num)
+```
+
+### NLP Approach: Trans-Obturator (TOMUS)
+#### Prior Medical History
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_tra_rest, dat_numeric=num_comp_sfcr_tra_rest,
+              gp="Prior Medical History", fo=order_comp_med_fac,
+              no=order_comp_med_num)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_tra_rest, dat_numeric=num_comp_sfcr_tra_rest,
+              gp="Primary Procedure Characteristics", fo=order_comp_pro_fac,
+              no=order_comp_pro_num)
+```
+
+#### Outcomes
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_tra_rest, dat_numeric=num_comp_sfcr_tra_rest,
+              gp="Outcomes", fo=order_comp_out_fac,
+              no=order_comp_out_num)
+```
+
+### NLP Approach: Unknown
+#### Prior Medical History
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_un_rest, dat_numeric=num_comp_sfcr_un_rest,
+              gp="Prior Medical History", fo=order_comp_med_fac,
+              no=order_comp_med_num)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_un_rest, dat_numeric=num_comp_sfcr_un_rest,
+              gp="Primary Procedure Characteristics", fo=order_comp_pro_fac,
+              no=order_comp_pro_num)
+```
+
+#### Outcomes
+Columns summarize n (%) concordant or mean difference (SD) where applicable. 
+```{r}
+print_concord(dat_factor=factor_comp_sfcr_un_rest, dat_numeric=num_comp_sfcr_un_rest,
+              gp="Outcomes", fo=order_comp_out_fac,
+              no=order_comp_out_num)
+```
+
+## Aggregate Data Availability
+### Overall
+#### Prior Medical History
+Columns summarize n (row %) present. 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Prior Medical History", 
+           fo=order_comp_med_fac, no=order_comp_med_num, c="na", agg=TRUE, ns=nsites_c)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (row %) present. 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Primary Procedure Characteristics", 
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="na", agg=TRUE, ns=nsites_c)
+```
+
+#### Outcomes
+Columns summarize n (row %) present. 
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_rest, num_comp_sfcr_rest, gp="Outcomes", 
+           fo=order_comp_out_fac, no=order_comp_out_num, c="na", agg=TRUE, ns=nsites_c)
+```
+
+### NLP Approach: Adjustable Sling (AMUS)
+#### Prior Medical History
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Prior Medical History", 
+           fo=order_comp_med_fac, no=order_comp_med_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Primary Procedure Characteristics", 
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Outcomes
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_as_rest, num_comp_sfcr_as_rest, gp="Outcomes", 
+           fo=order_comp_out_fac, no=order_comp_out_num, c="na", agg=TRUE, ns=nsites)
+```
+
+### NLP Approach: Retro-Pubic (RPMUS)
+#### Prior Medical History
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Prior Medical History", 
+           fo=order_comp_med_fac, no=order_comp_med_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Primary Procedure Characteristics", 
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Outcomes
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_ret_rest, num_comp_sfcr_ret_rest, gp="Outcomes", 
+           fo=order_comp_out_fac, no=order_comp_out_num, c="na", agg=TRUE, ns=nsites)
+```
+
+### NLP Approach: Single Incision (SIMUS)
+#### Prior Medical History
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Prior Medical History", 
+           fo=order_comp_med_fac, no=order_comp_med_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Primary Procedure Characteristics", 
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Outcomes
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_si_rest, num_comp_sfcr_si_rest, gp="Outcomes", 
+           fo=order_comp_out_fac, no=order_comp_out_num, c="na", agg=TRUE, ns=nsites)
+```
+
+### NLP Approach: Trans-Obturator (TOMUS)
+#### Prior Medical History
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Prior Medical History", 
+           fo=order_comp_med_fac, no=order_comp_med_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Primary Procedure Characteristics", 
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Outcomes
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_tra_rest, num_comp_sfcr_tra_rest, gp="Outcomes", 
+           fo=order_comp_out_fac, no=order_comp_out_num, c="na", agg=TRUE, ns=nsites)
+```
+
+### NLP Approach: Unknown
+#### Prior Medical History
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Prior Medical History", 
+           fo=order_comp_med_fac, no=order_comp_med_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Primary Procedure Characteristics
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Primary Procedure Characteristics", 
+           fo=order_comp_pro_fac, no=order_comp_pro_num, c="na", agg=TRUE, ns=nsites)
+```
+
+#### Outcomes
+Columns summarize n (row %) present.
+```{r, results='asis'}
+print_comp(factor_comp_sfcr_un_rest, num_comp_sfcr_un_rest, gp="Outcomes", 
+           fo=order_comp_out_fac, no=order_comp_out_num, c="na", agg=TRUE, ns=nsites)
+```
+
+## Aggregate Concordance
+### Prior Medical History
+Columns summarize percent concordant (95% CI) or mean difference (SD) where applicable. 
+```{r}
+print_concord(fmr=factor_comp_sfcr_rest, far=factor_comp_sfcr_as_rest,
+              frr=factor_comp_sfcr_ret_rest, fir=factor_comp_sfcr_si_rest,
+              ftr=factor_comp_sfcr_tra_rest, fur=factor_comp_sfcr_un_rest,
+              nmr=num_comp_sfcr_rest, nar=num_comp_sfcr_as_rest,
+              nrr=num_comp_sfcr_ret_rest, nir=num_comp_sfcr_si_rest,
+              ntr=num_comp_sfcr_tra_rest, nur=num_comp_sfcr_un_rest,
+              gp="Prior Medical History", fo=order_comp_med_fac, 
+              no=order_comp_med_num, agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+### Primary Procedure Characteristics
+Columns summarize percent concordant (95% CI) or mean difference (SD) where applicable.
+```{r}
+print_concord(fmr=factor_comp_sfcr_rest, far=factor_comp_sfcr_as_rest,
+              frr=factor_comp_sfcr_ret_rest, fir=factor_comp_sfcr_si_rest,
+              ftr=factor_comp_sfcr_tra_rest, fur=factor_comp_sfcr_un_rest,
+              nmr=num_comp_sfcr_rest, nar=num_comp_sfcr_as_rest,
+              nrr=num_comp_sfcr_ret_rest, nir=num_comp_sfcr_si_rest,
+              ntr=num_comp_sfcr_tra_rest, nur=num_comp_sfcr_un_rest,
+              gp="Primary Procedure Characteristics", fo=order_comp_pro_fac, 
+              no=order_comp_pro_num, agg=TRUE, ns=nsites, nsc=nsites_c)
+```    
+
+### Outcomes
+Columns summarize percent concordant (95% CI) or mean difference (SD) where applicable. 
+```{r hbjd4}
+print_concord(fmr=factor_comp_sfcr_rest, far=factor_comp_sfcr_as_rest,
+              frr=factor_comp_sfcr_ret_rest, fir=factor_comp_sfcr_si_rest,
+              ftr=factor_comp_sfcr_tra_rest, fur=factor_comp_sfcr_un_rest,
+              nmr=num_comp_sfcr_rest, nar=num_comp_sfcr_as_rest,
+              nrr=num_comp_sfcr_ret_rest, nir=num_comp_sfcr_si_rest,
+              ntr=num_comp_sfcr_tra_rest, nur=num_comp_sfcr_un_rest,
+              gp="Outcomes", fo=order_comp_out_fac, 
+              no=order_comp_out_num, agg=TRUE, ns=nsites, nsc=nsites_c)
+```
+
+# Chart Review Validation of NLP Approach & Mesh
+## Approach
+Columns summarize % concordant (% true positive, % true negative, % false positive, % false negative).
+```{r, results='asis'}
+print_valid(factor_comp_rscr, fo=order_comp_app_rscr, ns=nsites) 
+```
+
+## Mesh
+Columns summarize % concordant (% true positive, % true negative, % false positive, % false negative).
+```{r, results='asis'}
+print_valid(factor_comp_rscr, fo=order_comp_pro_rscr, ns=nsites) 
+```
+
+# Chart Review Validation of EHR Mesh
+Columns summarize % concordant (% true positive, % true negative, % false positive, % false negative).
+```{r, results='asis'}
+print_valid(factor_comp_sscr, fo=order_comp_pro_fac, ns=nsites) 
+```
+
+# Computing Environment
+`r mu$session()`

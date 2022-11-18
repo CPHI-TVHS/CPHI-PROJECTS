@@ -1,0 +1,45 @@
+#TOC{
+   position:fixed;
+   top:0;
+   // left:0;
+   right:0;
+   margin: 32px 20px 20px 20px;
+   z-index: 9;
+   // display:none;
+  }
+  #toc-toggle{
+    position:fixed;
+    top:0;
+    // left:0;
+    right:0;
+    margin: 5px 20px 5px 20px;
+  }
+  .col-md-3{
+    width: 0%;
+  }
+  .col-md-9{
+    width: 100%;
+  }
+  div.container-fluid.main-container{
+    max-width:none;
+    margin-left:0px;
+    margin-right:none;
+  }
+  p{
+  max-width:80ex;
+  }
+  p img{
+  max-width:none;
+  }
+
+pre code {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.table-fixed-header th {
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+}

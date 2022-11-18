@@ -1,0 +1,36 @@
+field,label,group
+HISTORYMENOPAUSE_DISCORDANT,History of menopause,Prior Medical History
+HISTORYSMOKING_DISCORDANT,History of smoking,Prior Medical History
+PRIORPROLAPSE_DISCORDANT,History of prolapse pre-procedure,Prior Medical History
+PRIORSUI_DISCORDANT,History of stress urinary incontinence,Prior Medical History
+PREABSURG_DISCORDANT,History of abdominal surgery pre-procedure,Prior Medical History
+FISTULA_DISCORDANT,Fistula post-procedure,Outcomes
+MESH_DISCORDANT_SCR,Synthetic mesh implantation,Primary Procedure Characteristics
+NO_MESH_DISCORDANT_SCR,Not synthetic mesh implantation,Primary Procedure Characteristics
+INDETERMINATE_MESH_DISCORDANT_SCR,Indeterminate synthetic mesh implantation,Primary Procedure Characteristics
+PREVOIDING_DISCORDANT,Voiding symptoms pre-procedure,Prior Medical History
+SUI_IND_DISCORDANT,Stress urinary incontinence,Prior Medical History
+REOPERATION_DISCORDANT,Reoperation post-procedure,Outcomes
+DEATH_DISCORDANT,Death post-procedure,Outcomes
+REMOVAL_DISCORDANT,Mesh removal post-procedure,Outcomes
+CONCOMITANTSURG_DISCORDANT,Concomitant surgery,Prior Medical History
+PAIN_DISCORDANT,Pain post-procedure,Outcomes
+PREHISTORYCHRONICPAIN_DISCORDANT,History of chronic pain pre-procedure,Prior Medical History
+POSTVOIDING_DISCORDANT,Voiding symptoms post-procedure,Outcomes
+INFECTION_DISCORDANT,Infection post-procedure,Outcomes
+PERFORATION_DISCORDANT,Perforation post-procedure,Outcomes
+EROSION_DISCORDANT,Mesh erosion post-procedure,Outcomes
+URODYNAMICTESTING_DISCORDANT,Urodynamic testing,Prior Medical History
+POSTHISTORYCHRONICPAIN_DISCORDANT,History of chronic pain post-procedure,Outcomes
+BMI_COMPARE,BMI,Prior Medical History
+DAYS_SURGERY_DEATH_COMPARE,Death post-procedure (in days),Outcomes
+MESH_DISCORDANT_RS,Synthetic mesh implantation,Primary Procedure Characteristics
+NO_MESH_DISCORDANT_RS,Not synthetic mesh implantation,Primary Procedure Characteristics
+INDETERMINATE_MESH_DISCORDANT_RS,Indeterminate synthetic mesh implantation,Primary Procedure Characteristics
+MESH_DISCORDANT_RCR,Synthetic mesh implantation,Primary Procedure Characteristics
+NO_MESH_DISCORDANT_RCR,Not synthetic mesh implantation,Primary Procedure Characteristics
+INDETERMINATE_MESH_DISCORDANT_RCR,Indeterminate synthetic mesh implantation,Primary Procedure Characteristics
+ADJ_SNGL_INC_DISCORDANT,Adjustable single incision / mini sling (SIMUS),Primary Procedure Characteristics
+RETROPUBIC_DISCORDANT,Retro-Pubic (RPMUS) or TVT,Primary Procedure Characteristics
+TRANSOB_DISCORDANT,Trans-Obturator (TOMUS),Primary Procedure Characteristics
+APP_UNKNOWN_DISCORDANT,Unknown Approach,Primary Procedure Characteristics

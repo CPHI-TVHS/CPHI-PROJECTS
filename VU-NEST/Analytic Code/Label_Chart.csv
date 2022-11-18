@@ -1,0 +1,134 @@
+field,label,group
+hx_of_bariatric_surgery,History of bariatric surgery,Prior Medical History
+prior_hysterectomy,History of hysterectomy pre-procedure,Prior Medical History
+prior_oophorectomy,History of oophorectomy pre-procedure,Prior Medical History
+prior_prolapse,History of prolapse pre-procedure,Prior Medical History
+prior_sui,History of stress urinary incontinence surgery,Prior Medical History
+stress,Stress urinary incontinence symptoms pre-procedure,Prior Medical History
+urge,Urge incontinence symptoms pre-procedure,Prior Medical History
+mixed,Mixed urinary incontinence symptoms pre-procedure,Prior Medical History
+occult,Occult stress urinary incontinence symptoms pre-procedure,Prior Medical History
+severe,Severe incontinence symptoms pre-procedure,Prior Medical History
+urgency,Urgency of urination symptoms pre-procedure,Prior Medical History
+retention,Urinary retention symptoms pre-procedure,Prior Medical History
+obstruction,Urinary obstruction symptoms pre-procedure,Prior Medical History
+dribble,Post-void dribble symptoms pre-procedure,Prior Medical History
+dyspareunia,Dyspareunia symptoms pre-procedure,Prior Medical History
+pelvic,Pelvic organ prolapse on pre-procedure exam,Prior Medical History
+enterocele,Vaginal enterocele on pre-procedure exam,Prior Medical History
+hysterectomy,Vaginal prolapse after hysterectomy on pre-procedure exam,Prior Medical History
+uterovaginal,Uterovaginal prolapse on pre-procedure exam,Prior Medical History
+cystocele,Anterior/cystocele on pre-procedure exam,Prior Medical History
+rectocele,Posterior/rectocele on pre-procedure exam,Prior Medical History
+urethrocele,Urethrocele on pre-procedure exam,Prior Medical History
+uterine_prolapse,Uterine prolapse on pre-procedure exam,Prior Medical History
+vault_prolapse_enterocele,Vault prolapse/enterocele on pre-procedure exam,Prior Medical History
+hemorrhage_or_bleeding_fro,Hemorrhage (EBL > 400 cc) intra-/post-operative complication,Primary Procedure Characteristics
+need_for_blood_transfusion,Need for blood transfusion intra-/post-operative complication,Primary Procedure Characteristics
+mesh_erosion_exposure,Mesh erosion/exposure intra-/post-operative complication,Primary Procedure Characteristics
+organ_perforation_from_mes,Trocar injury to bladder intra-/post-operative complication,Primary Procedure Characteristics
+pain_or_nerve_injury_after,Pain or nerve injury intra-/post-operative complication,Primary Procedure Characteristics
+bowel_injury,Bowel injury intra-/post-operative complication,Primary Procedure Characteristics
+bladder_urethral_injury,Bladder/urethral injury  intra-/post-operative complication,Primary Procedure Characteristics
+urethral_fistula,Urethral fistula intra-/post-operative complication,Primary Procedure Characteristics
+retropubic_hematoma,Retropubic hematoma intra-/post-operative complication,Primary Procedure Characteristics
+prior_surgical_site_infect,Prior surgical site infection intra-/post-operative complication,Primary Procedure Characteristics
+surgical_site_infection,Surgical site infection intra-/post-operative complication,Primary Procedure Characteristics
+urethral_injury,Urethral injury intra-/post-operative complication,Primary Procedure Characteristics
+vascular_injury,Vascular injury intra-/post-operative complication,Primary Procedure Characteristics
+synthetic_mesh_removal,Synthetic mesh removal during surgery re-operation,Outcomes
+fascia_removal,Fascia removal during surgery re-operation,Outcomes
+autologous_tissue_sling,Autologous tissue sling during surgery re-operation,Outcomes
+cadaveric_fascial_sling,Cadaveric fascial sling during surgery re-operation,Outcomes
+burch_colposuspension_tran,"Burch colposuspension - transabdominal urethropexy, abdominal approach, trans-abdominal colposuspension during surgery re-operation",Outcomes
+bulking_agents,Bulking agents during surgery re-operation,Outcomes
+collagen_implant_into_the,Collagen implant into the urethra and/or bladder neck during surgery re-operation,Outcomes
+urethral_suspension,Urethral suspension during surgery re-operation,Outcomes
+anterior_vesicourethropexy,Anterior vesicourethropexy during surgery re-operation,Outcomes
+vaginal_prolapse_repair,Vaginal prolapse repair during surgery re-operation,Outcomes
+sling_combined_with_prolap,Sling combined with prolapse repair during surgery re-operation,Outcomes
+abdominal_prolapse_repair,Abdominal prolapse repair during surgery re-operation,Outcomes
+robotic_prolapse_repair,Robotic prolapse repair during surgery re-operation,Outcomes
+salcrocolpopexy,Salcrocolpopexy during surgery re-operation,Outcomes
+enterocele_vault_repair,Enterocele (vault) repair during surgery re-operation,Outcomes
+sacrospinous_ligament_fixa,Sacrospinous ligament fixation during surgery re-operation,Outcomes
+urethropexy_marshall_march,"Urethropexy (Marshall-Marchetti-Krantz, Burch) during surgery re-operation",Outcomes
+kelly_plication_of_urethro,Kelly plication of urethrovesical neck during surgery re-operation,Outcomes
+cystocele_rectocele_repair,Cystocele/rectocele repair during surgery re-operation,Outcomes
+anterior_colporrhaphy_repa,"Anterior colporrhaphy, repair of cystocele with or without repair of urethrocele during surgery re-operation",Outcomes
+paravaginal_defect_repair,Paravaginal defect repair during surgery re-operation,Outcomes
+bladder_neck_suspension_gi,"Bladder neck suspension: Gittes, Stamey, Raz or Pyrerra during surgery re-operation",Outcomes
+trans_vaginal_retro_pubic,Trans-vaginal: retro-pubic during surgery re-operation,Outcomes
+trans_vaginal_trans_obtura,Trans-vaginal: trans-obturator (TOMMUS) during surgery re-operation,Outcomes
+trans_vaginal_single_incis,Trans-vaginal: single-incision slings (mini-slings) during surgery re-operation,Outcomes
+trans_vaginal_adjustable_s,Trans-vaginal: adjustable sling (AMUS) during surgery re-operation,Outcomes
+laparoscopic,Laparoscopic surgery during surgery re-operation,Outcomes
+open,Open surgery during surgery re-operation,Outcomes
+mesh_erosion_without_re_op,Mesh erosion without re-operation,Outcomes
+urinary_incontinence_witho,Urinary incontinence without re-operation,Outcomes
+deceased,Death post-procedure,Outcomes
+irritative_bladder_symptom,Irritative bladder symptoms or recurrent urinary infection caused by erosion of synthetic material into the bladder or urethra,Outcomes
+dyspareunia_discharge_or_b,"Dyspareunia, discharge, or bleeding related to extrusion of synthetic material into the vagina",Outcomes
+chronic_pelvic_or_groin_pa,Chronic pelvic pain following sling or mesh procedure,Outcomes
+misplaced_or_migrated_bulk,Misplaced or migrated bulking agent material,Outcomes
+mesh_exposure,Mesh exposure post-procedure,Outcomes
+mesh_erosion_to_bladder_or,Mesh erosion to bladder or urethra post-procedure,Outcomes
+groin_pain,Groin pain post-procedure,Outcomes
+partner_dyspareunia,Partner dyspareunia post-procedure,Outcomes
+fistula,Fistula post-procedure,Outcomes
+incomplete_bladder_emptyin,Incomplete bladder emptying post-procedure,Outcomes
+vaginal_band,Vaginal band post-procedure,Outcomes
+mesh_exposure_without_surg,Mesh exposure without surgery,Outcomes
+urinary_incontinence_wo,Urinary incontinence without surgery,Outcomes
+loosening_of_sling,Loosening of sling during mesh revision,Outcomes
+removal_of_2cm_includes_cu,Removal of <2cm (includes cutting in midline) of sling during mesh revision,Outcomes
+complete_removal_of_sling,Complete removal of sling,Outcomes
+CONCOMITANTSURG_CHART,Concomitant surgery,Prior Medical History
+CHART_RETROPUBIC,Retro-Pubic (RPMUS) or TVT,Primary Procedure Characteristics
+CHART_TRANSOB,Trans-Obturator (TOMUS),Primary Procedure Characteristics
+CHART_ADJ_SNGL_INC,Adjustable single incision / mini sling (SIMUS),Primary Procedure Characteristics
+CHART_APP_OTHER,Other Approach,Primary Procedure Characteristics
+CHART_MESH,Yes,Primary Procedure Characteristics
+CHART_NO_MESH,No,Primary Procedure Characteristics
+CHART_INDETERMINATE_MESH,Indeterminate,Primary Procedure Characteristics
+INT_IMPLANT_BULKING_AGENTS,Bulking agents,Primary Procedure Characteristics
+INT_IMPLANT_PUBO_VAGINAL_AUTO,Pubo-vaginal / autologous fascia,Primary Procedure Characteristics
+INT_IMPLANT_CAD_ALLOGRAFT,Cadaveric / allograft,Primary Procedure Characteristics
+INT_IMPLANT_PORCINE,Porcine,Primary Procedure Characteristics
+INT_IMPLANT_BURCH,Burch,Primary Procedure Characteristics
+HISTORYMENOPAUSE_PRE,Pre,Prior Medical History
+HISTORYMENOPAUSE_POST,Post,Prior Medical History
+HISTORYMENOPAUSE_UNKNOWN,Unknown,Prior Medical History
+SMOKING_STATUS_CURRENT,Current,Prior Medical History
+SMOKING_STATUS_FORMER,Former,Prior Medical History
+SMOKING_STATUS_NEVER,Never,Prior Medical History
+COUGH_STRESS_POSITIVE,Positive,Prior Medical History
+COUGH_STRESS_NEGATIVE,Negative,Prior Medical History
+COUGH_STRESS_NOT_DONE,Not done,Prior Medical History
+bmi,BMI,Prior Medical History
+days_abdominal_prolapse_repair,Abdominal prolapse repair post-procedure (in days),Outcomes
+days_anterior_colporrhaphy,Anterior colporrhaphy post-procedure (in days),Outcomes
+days_anterior_vesicourethropexy,Anterior vesicourethropexy post-procedure (in days),Outcomes
+days_autologous_tissue_sling,Autologous tissue sling post-procedure (in days),Outcomes
+days_bladder_neck_suspension,Bladder neck suspension post-procedure (in days),Outcomes
+days_bulking_agents,Bulking agents post-procedure (in days),Outcomes
+days_burch_colposuspension_tran,Burch colposuspension post-procedure (in days),Outcomes
+days_cadaveric_fascial_sling,Cadaveric fascial sling post-procedure (in days),Outcomes
+days_collagen_implant,Collagen implant post-procedure (in days),Outcomes
+days_cystocele_rectocele_repair,Cystocele/rectocele repair post-procedure (in days),Outcomes
+days_fascia_removal,Fascia removal post-procedure (in days),Outcomes
+days_kelly_plication,Kelly plication post-procedure (in days),Outcomes
+days_mesh_erosion_without_reop,Mesh erosion without re-operation post-procedure (in days),Outcomes
+days_paravaginal_defect_repair,Paravaginal defect repair post-procedure (in days),Outcomes
+days_robotic_prolapse_repair,Robotic prolapse repair post-procedure (in days),Outcomes
+days_sling_combined_prolapse_repair,Sling combined with prolapse repair post-procedure (in days),Outcomes
+DAYS_SURGERY_DEATH_CHART,Death post-procedure (in days),Outcomes
+days_synthetic_mesh_removal,Synthetic mesh removal post-procedure (in days),Outcomes
+days_urethral_suspension,Urethral suspension post-procedure (in days),Outcomes
+days_urethropexy,Urethropexy post-procedure (in days),Outcomes
+days_urinary_incontinence_without_reop,Urinary incontinence without re-operation post-procedure (in days),Outcomes
+days_vaginal_prolapse_repair,Vaginal prolapse repair post-procedure (in days),Outcomes
+years_prior_hysterectomy,History of hysterectomy pre-procedure (in years),Prior Medical History
+years_prior_oophorectomy,History of oophorectomy pre-procedure (in years),Prior Medical History
+years_prior_prolapse,History of prolapse pre-procedure (in years),Prior Medical History
+years_prior_sui,History of stress urinary incontinence surgery (in years),Prior Medical History
